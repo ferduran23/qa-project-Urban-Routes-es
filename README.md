@@ -21,9 +21,9 @@ Se cubren los siguientes escenarios:
 
 ## Tecnologías y técnicas utilizadas
 
-* **Python** — lenguaje principal del proyecto
-* **Pytest** — framework para organizar y ejecutar las pruebas
-* **Selenium WebDriver** — automatización del navegador Chrome
+* **Python 3.12** — lenguaje principal del proyecto
+* **Pytest 7.x** — framework para organizar y ejecutar las pruebas
+* **Selenium 4.x** — automatización del navegador Chrome
 * **Page Object Model (POM)** — patrón de diseño que separa los locators y métodos de la página de la lógica de los tests
 * **WebDriverWait + Expected Conditions** — esperas explícitas para manejar elementos dinámicos
 * **Chrome DevTools Protocol (CDP)** — usado para capturar el código de confirmación SMS desde los logs de red
@@ -37,7 +37,7 @@ Se cubren los siguientes escenarios:
 
 2. Asegurarse de tener ChromeDriver instalado y compatible con la versión de Chrome instalada.
 
-3. Configurar la URL de la aplicación en `data.py`.
+3. Configurar la URL de la aplicación en `data.py`. La URL del servidor es **temporal**: caduca periódicamente, por lo que debe reemplazarse por una nueva URL activa antes de correr las pruebas. La variable a actualizar es `URBAN_ROUTES_URL`.
 
 4. Ejecutar las pruebas:
    ```
@@ -47,6 +47,7 @@ Se cubren los siguientes escenarios:
 ## Estructura del proyecto
 
 * `main.py` → Clase Page Object `UrbanRoutesPage` y casos de prueba `TestUrbanRoutes`
+* `helpers.py` → Función `retrieve_phone_code` para capturar el código SMS desde los logs de red
 * `data.py` → URLs, direcciones, número de teléfono, datos de tarjeta y mensaje del conductor
 * `README.md` → Documentación del proyecto
 * `.gitignore` → Archivos ignorados por Git
