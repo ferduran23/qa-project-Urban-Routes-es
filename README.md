@@ -1,53 +1,57 @@
-# Automatización Urban Routes
+# Urban Routes Test Automation
 
-## Descripción
+## Description
 
-Este proyecto contiene pruebas automatizadas para la aplicación web Urban Routes, una plataforma para solicitar taxis. Las pruebas cubren el flujo completo de un pedido: configurar una ruta, seleccionar una tarifa, agregar un número de teléfono, agregar una tarjeta de pago, escribir un mensaje al conductor, solicitar artículos adicionales y confirmar el pedido.
+This project contains automated tests for the Urban Routes web application, a taxi-booking platform. The tests cover the complete order flow: setting up a route, selecting a fare, adding a phone number, adding a payment card, entering a message for the driver, requesting additional items, and confirming the order.
 
-El objetivo es validar que todos los pasos del flujo funcionen correctamente de principio a fin mediante automatización con Selenium.
+The goal is to validate that every step of the booking flow works correctly from end to end through Selenium-based automation.
 
-## Qué se está probando
+## Test Coverage
 
-Se cubren los siguientes escenarios:
+The following scenarios are covered:
 
-* Configuración de la ruta de origen y destino
-* Selección de la tarifa Comfort
-* Ingreso y confirmación del número de teléfono con código SMS
-* Agregado de tarjeta de crédito como método de pago
-* Ingreso de mensaje para el conductor
-* Solicitud de manta y pañuelos
-* Solicitud de 2 helados
-* Confirmación del pedido y aparición del modal con información del conductor
+* Setting origin and destination addresses
+* Selecting the Comfort fare
+* Entering and confirming a phone number via SMS verification code
+* Adding a credit card as a payment method
+* Entering a message for the driver
+* Requesting a blanket and tissues
+* Requesting 2 ice creams
+* Confirming the order and verifying the driver information modal appears
 
-## Tecnologías y técnicas utilizadas
+## Technologies and Techniques Used
 
-* **Python 3.12** — lenguaje principal del proyecto
-* **Pytest 7.x** — framework para organizar y ejecutar las pruebas
-* **Selenium 4.x** — automatización del navegador Chrome
-* **Page Object Model (POM)** — patrón de diseño que separa los locators y métodos de la página de la lógica de los tests
-* **WebDriverWait + Expected Conditions** — esperas explícitas para manejar elementos dinámicos
-* **Chrome DevTools Protocol (CDP)** — usado para capturar el código de confirmación SMS desde los logs de red
+* **Python 3.12** — Main programming language
+* **Pytest 7.x** — Framework for organizing and executing tests
+* **Selenium 4.x** — Browser automation using Chrome
+* **Page Object Model (POM)** — Design pattern that separates page locators and methods from test logic
+* **WebDriverWait + Expected Conditions** — Explicit waits for handling dynamic web elements
+* **Chrome DevTools Protocol (CDP)** — Used to capture the SMS confirmation code from network logs
 
-## Cómo correr las pruebas
+## Running the Tests
 
-1. Instalar dependencias:
-   ```
-   pip install pytest selenium
-   ```
+1. Install dependencies:
 
-2. Asegurarse de tener ChromeDriver instalado y compatible con la versión de Chrome instalada.
+```bash
+pip install pytest selenium
+```
 
-3. Configurar la URL de la aplicación en `data.py`. La URL del servidor es **temporal**: caduca periódicamente, por lo que debe reemplazarse por una nueva URL activa antes de correr las pruebas. La variable a actualizar es `URBAN_ROUTES_URL`.
+2. Make sure ChromeDriver is installed and compatible with your version of Google Chrome.
 
-4. Ejecutar las pruebas:
-   ```
-   pytest main.py
-   ```
+3. Configure the application URL in `data.py`.
 
-## Estructura del proyecto
+> **Note:** The server URL is temporary and expires periodically. Before running the tests, replace the value of `URBAN_ROUTES_URL` with a new active URL.
 
-* `main.py` → Clase Page Object `UrbanRoutesPage` y casos de prueba `TestUrbanRoutes`
-* `helpers.py` → Función `retrieve_phone_code` para capturar el código SMS desde los logs de red
-* `data.py` → URLs, direcciones, número de teléfono, datos de tarjeta y mensaje del conductor
-* `README.md` → Documentación del proyecto
-* `.gitignore` → Archivos ignorados por Git
+4. Run the test suite:
+
+```bash
+pytest main.py
+```
+
+## Project Structure
+
+* `main.py` → UrbanRoutesPage Page Object class and TestUrbanRoutes test cases
+* `helpers.py` → `retrieve_phone_code` function for capturing the SMS verification code from network logs
+* `data.py` → URLs, addresses, phone number, payment card data, and driver message
+* `README.md` → Project documentation
+* `.gitignore` → Files ignored by Git
